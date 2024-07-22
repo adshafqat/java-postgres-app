@@ -10,6 +10,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN javac Main.java
+# Include the JDBC driver in the classpath
+RUN javac -cp postgresql-42.2.20.jar Main.java
 
-CMD ["java", "Main"]
+CMD ["java", "-cp", ".:postgresql-42.2.20.jar", "Main"]

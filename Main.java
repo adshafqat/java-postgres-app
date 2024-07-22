@@ -15,9 +15,9 @@ public class Main {
         Properties props = new Properties();
         props.setProperty("user", user);
         props.setProperty("password", password);
-        props.setProperty("ssl", "true");
-        props.setProperty("sslmode", "verify-ca");
-        props.setProperty("sslrootcert", sslCert);
+     //   props.setProperty("ssl", "true");
+     //   props.setProperty("sslmode", "verify-ca");
+     //   props.setProperty("sslrootcert", sslCert);
 
         try {
             Connection conn = DriverManager.getConnection(url, props);
