@@ -21,6 +21,8 @@ spec:
         envFrom:
         - configMapRef:
             name: db-config
+        - secretRef:
+            name: db-secret            
         volumeMounts:
         - name: ssl-cert
           mountPath: /tmp
