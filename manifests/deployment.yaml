@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: javapostgresdocker
+  name: java-postgres-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: javapostgresdocker
+      app: java-postgres-app
   template:
     metadata:
       labels:
-        app: javapostgresdocker
+        app: java-postgres-app
     spec:
       securityContext:
         fsGroup: 2000
         runAsUser: 1000
       containers:
-      - name: javapostgresdocker
-        image: docker.io/ashafqat/javapostgresapp:v0.1
+      - name: java-postgres-app
+        image: docker.io/ashafqat/javapostgresapp:v0.2
         envFrom:
         - configMapRef:
             name: db-config
