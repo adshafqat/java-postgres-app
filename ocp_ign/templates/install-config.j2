@@ -1,0 +1,89 @@
+apiVersion: v1
+baseDomain: {{ base_domain }}
+compute:
+- hyperthreading: Enabled
+  name: worker
+  replicas: 0
+controlPlane:
+  hyperthreading: Enabled 
+  name: master
+  replicas: 3
+metadata:
+  name: {{ environment_name }}
+networking:
+  clusterNetwork:
+  - cidr: {{ cluster_network_cidr }}
+    hostPrefix: {{ cluster_network_host_prefix }}
+  machineNetwork:
+  - cidr: {{ machine_network_cidr }}
+  networkType: {{ network_type }}
+  serviceNetwork:
+  - {{ service_network_cidr }}
+platform:
+  none: {}
+fips: false
+pullSecret: '{{ ocp4_pullsecret }}'
+sshKey: '{{ ocp4_sshpubkey }}'
+# NBC Prod Artifactory Certificate Bundle
+additionalTrustBundle: {{ additional_trust_bundle | to_json  }} 
+imageContentSources:
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_quay_repo }}/openshift-release-dev/ocp-release
+  source: quay.io/openshift-release-dev/ocp-release
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_quay_repo }}/openshift-release-dev/ocp-v4.0-art-dev
+  source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_quay_repo }}/openshift-release-dev/ocp-release
+  source: registry.svc.ci.openshift.org/ocp/release
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_quay_repo }}/openshift-release-dev/ocp-release
+  source: registry.svc.ci.openshift.org/origin/release
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/openshift4
+  source: registry.redhat.io/openshift4
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/distributed-tracing
+  source: registry.redhat.io/distributed-tracing
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/ocs4
+  source: registry.redhat.io/ocs4
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/openshift-istio
+  source: registry.redhat.io/openshift-istio
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/openshift-service-mesh
+  source: registry.redhat.io/openshift-service-mesh
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/rhceph
+  source: registry.redhat.io/rhceph
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/redhat
+  source: registry.redhat.io/redhat
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/rhscl
+  source: registry.redhat.io/rhscl
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/rhel8
+  source: registry.redhat.io/rhel8
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/compliance
+  source: registry.redhat.io/compliance
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo}}/openshift-logging
+  source: registry.redhat.io/openshift-logging
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_quay_repo }}/ocs-dev
+  source: quay.io/ocs-dev
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo }}/devworkspace
+  source: registry.redhat.io/devworkspace
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo }}/web-terminal-tech-preview
+  source: registry.redhat.io/web-terminal-tech-preview
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo }}/rhosdt
+  source: registry.redhat.io/rhosdt
+- mirrors:
+  - {{ artifactory_uri }}/{{ artifactory_registry_redhat_repo }}/odf4
+  source: registry.redhat.io/odf4  

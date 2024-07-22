@@ -1,0 +1,94 @@
+---
+# defaults/main.yml
+
+# Force recreation of Ignition files and other
+# installation artifacts
+ocp_ign_force: false
+ocp_ign_kmaas_force: false
+
+# environment_name: ocp4dvs
+# domain_prefix: admin
+# base_install_folder_path: /opt/ocp4-workspace/platform-scrapbook/openshift/openshiftv4
+# ign_remote_install_path: dvs/vmware-installation
+# encode_output_path: dvs/vmware-installation
+# install_config_path: dvs/vmware-install-config.yaml
+# additional_machine_config_manifests: dvs/machineconfigmanifests
+# webserver_folder_path: /var/www/html
+# add_bootstrap_chrony: true
+# chrony_config: ../../../manifests/ocp4/common/chrony_config.txt
+# add_bootstrap_static_routes: true
+# bootstrap_static_routes:
+#   - static_route: 172.28.142.0/23 172.28.144.1
+#   - static_route: 172.28.143.0/23 172.28.144.2
+artifactory_uri: artifactory.nbsnet.co.uk
+artifactory_quay_repo: openshift4-quay-docker-remote
+artifactory_registry_redhat_repo: docker
+additional_trust_bundle: |
+  -----BEGIN CERTIFICATE-----
+  MIIFqzCCA5OgAwIBAgIKYSo9jAAAAAAACDANBgkqhkiG9w0BAQsFADBNMQswCQYD
+  VQQGEwJHQjETMBEGA1UEChMKTmF0aW9ud2lkZTELMAkGA1UECxMCSVQxHDAaBgNV
+  BAMTE05hdGlvbndpZGUgUm9vdCBDQTIwHhcNMjAwMzE3MTAzNzI4WhcNMzAwMzE3
+  MTA0NzI4WjBQMQswCQYDVQQGEwJHQjETMBEGA1UEChMKTmF0aW9ud2lkZTELMAkG
+  A1UECxMCSVQxHzAdBgNVBAMTFk5hdGlvbndpZGUgSXNzdWluZyBDQTIwggEiMA0G
+  CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDLunf+hYg2ZKJGqJyBFyF+fat0o097
+  VK1+3WRVoT10/dTW6IVMgtQpD94+1+C1BNGd850r12kbuGc7EgF5zJb64qX8Zt2Q
+  +YrhzeQYlwqa9bfAmYEY9BGwCaT4z5kjdwV2K+8GEuxbxj9z+2NZKKrfwFOqKVPi
+  B5US4NXLKBnnpUqdtB91JDWTYY4S5T9kXlxpRG/MyHEmfMqdLpeOHdt+s73+NEHw
+  LqQGGdocVFrFWfZX4vjLE6Y7HLtj/Dsnl0KQljo4nozcDxUjXKB8fnuRD3Qey42c
+  Xgt9dCQX5EBUDEsFwjOyyK4Bu364W+KTBvFVVv3iruwZpcxKVhndPgePAgMBAAGj
+  ggGIMIIBhDAQBgkrBgEEAYI3FQEEAwIBATAjBgkrBgEEAYI3FQIEFgQUDHtjigTi
+  7JOiE31ZoRKyRarPqmIwHQYDVR0OBBYEFH6qhBYR681NzKXR6XIzeCAwTUQ/MIGI
+  BgNVHSAEgYAwfjB8BgRVHSAAMHQwRAYIKwYBBQUHAgIwOB42AE4AQgBTACAATABl
+  AGcAYQBsACAAcABvAGwAaQBjAHkAIABzAHQAYQB0AGUAbQBlAG4AdAAuMCwGCCsG
+  AQUFBwIBFiBodHRwOi8vcGtkLm5ic25ldC5jby51ay9jcHMuaHRtbDAZBgkrBgEE
+  AYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwEgYDVR0TAQH/BAgwBgEB
+  /wIBADAfBgNVHSMEGDAWgBQBtuxBsqkjbsnEBqB8ZKmIfZDJkzBEBgNVHR8EPTA7
+  MDmgN6A1hjNodHRwOi8vcGtkLm5ic25ldC5jby51ay9OYXRpb253aWRlJTIwUm9v
+  dCUyMENBMi5jcmwwDQYJKoZIhvcNAQELBQADggIBAHhsIrpw7KEuHhpYR7xB560q
+  NculU4ixsIGNvkBXXHUzpBlJARA671ElKdAtUO6wb2vGzUH+TSFThno40errJotI
+  J24vmRwP92AOm3u/1hWx65QNfDqLi0fhJZWWyCYfK8hFp/QIW9Iz8AjMVTqkNj6q
+  97DturoBVfZ3Sxl6dm+ZdAveDrrh1nBR+clj8QKNWN+b/Le7D9KFl1NOExd4tJ2X
+  DozxEqr+SmWxht3EwrRoUbRIdwe4VI2zl7Xn9/K/owlyhZUPiaCuBb3/wdbjAJ1C
+  UvQKg9/0cNJiqK87tRqhjp3mwVtt8RFnKbW4BMb4gZw3GcgqOtmLCJwy1hp1dV76
+  ttD2JVNEssPHBb4YRxeWVQBLlWU2URfRe70Y2woX1qpnpHt1NJXCkmFHXurH9PU2
+  WjLmVDHr/maXWGM4sS+YIWr7Hg3uC8vocyp/wLqRsHMYmqRYq7chePrnPDKndRyD
+  v2NJhHNJTyIkG8aNkIIF2FgL7OLm1Wu21Uls86t2oGqd9c2VnroZ7r2HTemtEtzZ
+  EqAoQ1CnZdJHTX5wZF/kpeDVfj1pKwv2BHaKkEQunclJpJG+91WyLxjiLKXb+E1e
+  CB8HXGKdF+SuAt5aObdNOHJGwVrtosHHSvet9EzVBnfql5q9aqVYF1V6q0vSGO8p
+  lMNdytI3zQoA2uH0uS9a
+  -----END CERTIFICATE-----
+  -----BEGIN CERTIFICATE-----
+  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
+  OJvAcplN
+  -----END CERTIFICATE-----
