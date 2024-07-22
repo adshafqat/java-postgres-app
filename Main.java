@@ -15,22 +15,27 @@ public class Main {
         Properties props = new Properties();
         props.setProperty("user", user);
         props.setProperty("password", password);
-     //   props.setProperty("ssl", "true");
-     //   props.setProperty("sslmode", "verify-ca");
-     //   props.setProperty("sslrootcert", sslCert);
+        props.setProperty("ssl", "true");
+        props.setProperty("sslmode", "verify-ca");
+        props.setProperty("sslrootcert", sslCert);
 
         try {
-            Connection conn = DriverManager.getConnection(url, props);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
+            while (true) {
+                Connection conn = DriverManager.getConnection(url, props);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
 
-            while (rs.next()) {
-                System.out.println(rs.getString(1) + "\t" + rs.getString(2));
+                while (rs.next()) {
+                    System.out.println(rs.getString(1) + "\t" + rs.getString(2));
+                }
+
+                rs.close();
+                stmt.close();
+                conn.close();
+                
+                // Sleep for 10 minutes before fetching data again
+                Thread.sleep(600000);
             }
-
-            rs.close();
-            stmt.close();
-            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

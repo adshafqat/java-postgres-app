@@ -17,17 +17,16 @@ spec:
         runAsUser: 1000
       containers:
       - name: java-postgres-app
-        image: docker.io/ashafqat/javapostgresapp:v0.3
+        image: docker.io/ashafqat/javapostgresapp:v0.5
         envFrom:
         - configMapRef:
             name: db-config
         volumeMounts:
         - name: ssl-cert
-          mountPath: /app
-          subPath: server.crt
+          mountPath: /tmp
         env:
         - name: SSL_CERT
-          value: /app/server.crt
+          value: /tmp/server.crt
       volumes:
       - name: ssl-cert
         secret:
