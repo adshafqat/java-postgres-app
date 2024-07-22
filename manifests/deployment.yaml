@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-postgres-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-postgres-app
+  template:
+    metadata:
+      labels:
+        app: java-postgres-app
+    spec:
+      containers:
+      - name: java-postgres-app
+        image: docker.io/ashafqat/javapostgresapp:v0.1
+        envFrom:
+        - configMapRef:
+            name: db-config
+        volumeMounts:
+        - name: ssl-cert
+          mountPath: /app
+          subPath: server.crt
+        env:
+        - name: SSL_CERT
+          value: /app/server.crt
+      volumes:
+      - name: ssl-cert
+        secret:
+          secretName: db-cert
