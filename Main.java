@@ -16,6 +16,8 @@ public class Main {
         props.setProperty("user", user);
         props.setProperty("password", password);
         props.setProperty("ssl", "true");
+       // props.setProperty("sslmode", "require");
+        System.out.println("SSL Mode: verify-ca");
         props.setProperty("sslmode", "verify-ca");
         props.setProperty("sslrootcert", sslCert);
 
