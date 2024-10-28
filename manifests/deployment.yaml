@@ -12,9 +12,6 @@ spec:
       labels:
         app: java-postgres-app
     spec:
-      securityContext:
-        fsGroup: 2000
-        runAsUser: 1000
       containers:
       - name: java-postgres-app
         image: docker.io/ashafqat/javapostgresapp:v0.8
