@@ -17,7 +17,7 @@ spec:
         runAsUser: 1000
       containers:
       - name: java-postgres-app
-        image: docker.io/ashafqat/javapostgresapp:v0.5
+        image: docker.io/ashafqat/javapostgresapp:v0.8
         envFrom:
         - configMapRef:
             name: db-config
